@@ -1,0 +1,15 @@
+python main_table.py \
+  --train_json_file "./data/train.json" \
+  --meta_json_file "./data/meta_MMMU.json" \
+  --test_json_file "./data/test_MMMU_8cots.json" \
+  --reward_model "./weights_cold_start" \
+  --weights_path "./weights" \
+  --lr 5e-5 \
+  --meta_lr 5e-3 \
+  --activation_function "Clip" \
+  --aggregation_function "mean" \
+  --loss_target "both" \
+  --unroll_steps 1 \
+  --initialization 1.0 \
+  --save_every_iterations 3000 \
+  --iteration_num 100000

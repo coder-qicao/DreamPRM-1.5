@@ -1,0 +1,16 @@
+python main_net.py \
+  --train_json_file "./data/train_large.json" \
+  --meta_json_file "./data/meta_MMMU.json" \
+  --test_json_file "./data/test_MMMU_8cots.json" \
+  --reward_model "./weights_cold_start" \
+  --weights_path "./weights" \
+  --lr 5e-5 \
+  --meta_lr 1e-4 \
+  --activation_function "sigmoid" \
+  --aggregation_function "mean" \
+  --loss_target "both" \
+  --unroll_steps 1 \
+  --hidden_dim 10 \
+  --save_every_iterations 3000 \
+  --iteration_num 100000 \
+  --max_patch_num 5
