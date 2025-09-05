@@ -24,17 +24,17 @@ We propose DreamPRM-1.5, an *instance-reweighted* multimodal process reward mode
 
 By integrating DreamPRM-1.5 into test-time scaling, we achieve a new state-of-the-art accuracy of 84.6 on the validation set of MMMU benchmark, further advancing the performance frontier of the strongest existing model, GPT-5-mini. Moreover, we conduct a thorough sanity check on instance reweighting, which highlights DreamPRM-1.5’s potential to approach oracle-level performance under test-time scaling.
 
-| Category                                                | Model / Method                |        Accuracy |
-|---------------------------------------------------------|-------------------------------|----------------:|
-| **Leaderboard (external, top-performing models)**       | GPT-5 w/ thinking             |            84.2 |
-|                                                         | Gemini 2.5 Pro Deep-Think     |            84.0 |
-|                                                         | o3                            |            82.9 |
-| **Test-time Scaling (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking  |            80.0 |
-|                                                         | VanillaPRM — No Selection     |     79.1 (-0.9) |
-|                                                         | Self-consistency              |     81.4 (+1.4) |
-|                                                         | VisualPRM                     |     80.5 (+0.5) |
-|                                                         | DreamPRM-1.5 — Instance Table | **84.6** (+4.6) |
-|                                                         | DreamPRM-1.5 — Instance Net   |     83.6 (+3.6) |
+| Category                                                | Model / Method                |            Accuracy |
+|---------------------------------------------------------|-------------------------------|--------------------:|
+| **Leaderboard (external, top-performing models)**       | GPT-5 w/ thinking             |                84.2 |
+|                                                         | Gemini 2.5 Pro Deep-Think     |                84.0 |
+|                                                         | o3                            |                82.9 |
+| **Test-time Scaling (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking  |                80.0 |
+|                                                         | VanillaPRM — No Selection     |         79.1 (-0.9) |
+|                                                         | Self-consistency              |         81.4 (+1.4) |
+|                                                         | VisualPRM                     |         80.5 (+0.5) |
+|                                                         | DreamPRM-1.5 — Instance Table | **84.6** (**+4.6**) |
+|                                                         | DreamPRM-1.5 — Instance Net   |         83.6 (+3.6) |
 
 [//]: # (|  | DreamPRM-1.5 — Instance Table &#40;sanity check&#41; | 90.4 &#40;+10.4&#41; |)
 
