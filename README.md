@@ -8,7 +8,7 @@ This repository holds the code and data of [DreamPRM-1.5: Unlocking the Potentia
 > **DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training**  
 > Training multimodal process reward models (PRMs) is challenged by distribution shifts and noisy data. We introduce DreamPRM-1.5, an instance-reweighted framework that adaptively adjusts the importance of each training example via bi-level optimization. 
 > We design two complementary strategies: Instance Table, effective for smaller datasets, and Instance Net, scalable to larger ones. 
-> Integrated into test-time scaling, DreamPRM-1.5 achieves 84.6 accuracy on the MMMU benchmark, surpassing GPT-5-mini. Moreover, a sanity check using test-distribution meta data shows DreamPRM-1.5 can closely approach oracle-level performance, highlighting its potential to fully exploit each training instance.
+> Integrated into test-time scaling, DreamPRM-1.5 achieves 84.6 accuracy on the MMMU benchmark, surpassing GPT-5.
 
 ## Table of Contents
 1. [Overview](#installation)
