@@ -1,7 +1,6 @@
 python main.py \
   --train_json_file "./data/train_cold_start.json" \
   --meta_json_file "./data/meta_MMMU_Pro.json" \
-  --test_json_file "./data/test_MMMU.json" \
   --reward_model "OpenGVLab/InternVL3-1B" \
   --weights_path "./weights_cold_start" \
   --lr 5e-5 \

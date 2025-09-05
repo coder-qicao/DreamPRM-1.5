@@ -22,7 +22,6 @@ parser = argparse.ArgumentParser(description="OraclePRM")
 # data file path and model path
 parser.add_argument('--train_json_file', type=str, default="./data/train.json")
 parser.add_argument('--meta_json_file', type=str, default="./data/meta.json")
-parser.add_argument('--test_json_file', type=str, default="./data/test_MathVista_small.json")
 parser.add_argument('--weights_path', type=str, default="./weights")
 parser.add_argument("--reward_model", type=str, default="OpenGVLab/InternVL3-1B")
 # bi-level optimization configuration
@@ -84,11 +83,9 @@ resume_labels = None
 (
     train_dataloader,
     meta_dataloader,
-    test_dataloader,
 ) = build_dataloader(
     train_json_file = args.train_json_file,
     meta_json_file = args.meta_json_file,
-    test_json_file = args.test_json_file,
     train_batch_size= args.batch_size,
     meta_batch_size= args.batch_size,
     max_patch_num = args.max_patch_num,

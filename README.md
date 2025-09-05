@@ -98,7 +98,6 @@ python test.py
 |-----------|------|---------|-------------|
 | `--train_json_file` | str | `"./data/train.json"` | Training data file path |
 | `--meta_json_file` | str | `"./data/meta.json"` | Meta data file path |
-| `--test_json_file` | str | `"./data/test_MMMU.json"` | Test data file path |
 | `--weights_path` | str | `"./weights"` | Model weights path |
 | `--reward_model` | str | `"OpenGVLab/InternVL3-1B"` | Reward model |
 

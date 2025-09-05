@@ -138,19 +138,16 @@ class MyTestDataset(Dataset):
 def build_dataloader(
         train_json_file,
         meta_json_file,
-        test_json_file,
         train_batch_size,
         meta_batch_size,
         max_patch_num,
 ):
     train_dataset = MyDataset(read_json(train_json_file), max_patch_num)
     meta_dataset = MyMetaDataset(read_json(meta_json_file), max_patch_num)
-    test_dataset = MyTestDataset(read_json(test_json_file))
     train_dataloader = DataLoader(train_dataset, batch_size=train_batch_size, shuffle=True)
     meta_dataloader = DataLoader(meta_dataset, batch_size=meta_batch_size, shuffle=True)
-    test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=True)
 
-    return train_dataloader, meta_dataloader, test_dataloader
+    return train_dataloader, meta_dataloader
 
 
 def build_test_dataloader(

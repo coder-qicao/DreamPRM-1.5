@@ -1,7 +1,6 @@
 python main_net.py \
   --train_json_file "./data/train_large.json" \
   --meta_json_file "./data/meta_MMMU.json" \
-  --test_json_file "./data/test_MMMU_8cots.json" \
   --reward_model "./weights_cold_start" \
   --weights_path "./weights" \
   --lr 5e-5 \

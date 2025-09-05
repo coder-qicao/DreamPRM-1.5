@@ -2,7 +2,7 @@ from transformers import AutoModel, AutoTokenizer
 from data import build_test_dataloader
 import torch
 from utils import select_best_answer
-
+from tqdm import tqdm
 
 
 test_dataloader = build_test_dataloader(test_json_file = "./data/test_MMMU_8cots.json")
@@ -20,7 +20,7 @@ tokenizer = AutoTokenizer.from_pretrained("OpenGVLab/InternVL3-1B", trust_remote
 correct = 0
 total = 0
 
-for inputs in test_dataloader:
+for inputs in tqdm(test_dataloader):
     # input_test_data_format:
     # {"question": question, "image_path": image_path, "candidate":[1, 2, 3, 4], "true_false":[True, False, True, False]}
     with torch.no_grad():
