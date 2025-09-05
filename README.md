@@ -1,5 +1,5 @@
 # DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training
-This repository holds the code and data of [DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training](https://arxiv.org/abs/2505.20241).
+This repository holds the code and data of [DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training](https://github.com/coder-qicao/DreamPRM-1.5/blob/main/figs/DreamPRM-1.5.pdf).
 
 ## News 🚀🚀🚀
 * Update on Sep 5, 2025: release codes, checkpoints and paper
