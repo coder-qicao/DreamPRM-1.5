@@ -24,17 +24,17 @@ We propose OraclePRM, an *instance-reweighted* multimodal process reward model t
 
 By integrating OraclePRM into test-time scaling, we achieve a new state-of-the-art accuracy of 84.6 on the validation set of MMMU benchmark, further advancing the performance frontier of the strongest existing model, GPT-5-mini. Moreover, we conduct a thorough sanity check on instance reweighting, which highlights OraclePRM’s potential to approach oracle-level performance under test-time scaling.
 
-| Category | Model / Method | Accuracy |
-|---|---|---:|
-| **Leaderboard (external, top-performing models)** | GPT-5 w/ thinking | 84.2 |
-|  | Gemini 2.5 Pro Deep-Think | 84.0 |
-|  | o3 | 82.9 |
-| **OraclePRM (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking | 80.0 |
-|  | OraclePRM — Instance Table | 84.6 (+4.6) |
-|  | OraclePRM — Instance Net | 86.3 (+6.3) |
+| Category | Model / Method |     Accuracy |
+|---|---|-------------:|
+| **Leaderboard (external, top-performing models)** | GPT-5 w/ thinking |         84.2 |
+|  | Gemini 2.5 Pro Deep-Think |         84.0 |
+|  | o3 |         82.9 |
+| **OraclePRM (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking |         80.0 |
+|  | OraclePRM — Instance Table |  84.6 (+4.6) |
+|  | OraclePRM — Instance Net |  83.6 (+3.6) |
 |  | OraclePRM — Instance Table (sanity check) | 90.4 (+10.4) |
-|  | OraclePRM — Instance Net (sanity check) | 86.3 (+6.3) |
-|  | Oracle (upper bound) | 90.7 |
+|  | OraclePRM — Instance Net (sanity check) |  86.3 (+6.3) |
+|  | Oracle (upper bound) |         90.7 |
 
 ## Model Checkpoints <a name="checkpoints"></a>
 | Model                   | Hugging Face Link                                                             |
@@ -141,14 +141,15 @@ python test.py
 ---
 
 ### Other important parameters
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `--retrain` | bool | False | Retrain flag |
-| `--activation_function` | str | `"LeakyReLU"` | Activation function (LeakyReLU \| ReLU \| No \| Clip) |
-| `--aggregation_function` | str | `"mean"` | Aggregation function (mean \| max \| min \| log_mean) |
-| `--loss_target` | str | `"both"` | Loss target (+ \| both) |
-| `--initialization` | float | 1.0 | Initialization value |
-| `--max_patch_num` | int | 6 | Maximum patch number |
+| Parameter | Type  | Default | Description                                           |
+|-----------|-------|---------|-------------------------------------------------------|
+| `--retrain` | bool  | False | Retrain flag                                          |
+| `--activation_function` | str   | `"LeakyReLU"` | Activation function (LeakyReLU \| ReLU \| No \| Clip) |
+| `--aggregation_function` | str   | `"mean"` | Aggregation function (mean \| max \| min \| log_mean) |
+| `--loss_target` | str   | `"both"` | Loss target (+ \| both)                               |
+| `--initialization` | float | 1.0 | Initialization value                                  |
+| `--max_patch_num` | int   | 6 | Maximum patch number                                  |
+| `--scheduler_type` | str   | `"cosine_schedule_with_warmup"` | scheduler type  |                                      |
 
 ---
 ## Acknowledgement <a name="acknowledgement"></a>

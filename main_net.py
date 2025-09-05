@@ -60,6 +60,7 @@ parser.add_argument("--aggregation_function", type=str, default="mean", help="me
 parser.add_argument("--loss_target", type=str, default="both", help="+|both")
 parser.add_argument("--initialization", type=float, default=1.0)
 parser.add_argument("--max_patch_num", type=int, default=6)
+parser.add_argument("--scheduler_type", type=str, default="cosine_schedule_with_warmup", help="cosine_schedule_with_warmup|step_lr")
 # parser.add_argument("--dampening", type=float, default=0.0)
 # parser.add_argument("--nesterov", type=bool, default=False)
 # parser.add_argument("--num_meta", type=int, default=1000)
@@ -163,14 +164,16 @@ class Upper(ImplicitProblem):
         return meta_optimizer
 
     def configure_scheduler(self):
-        # scheduler = optim.lr_scheduler.StepLR(
-        #     self.optimizer, step_size = args.meta_scheduler_step_size, gamma=args.scheduler_gamma
-        # )
-        scheduler = get_cosine_schedule_with_warmup(
-            self.optimizer,
-            num_warmup_steps=0.05 * args.iteration_num,
-            num_training_steps=args.iteration_num
-        )
+        if args.scheduler_type == "cosine_schedule_with_warmup":
+            scheduler = get_cosine_schedule_with_warmup(
+                self.optimizer,
+                num_warmup_steps=0.05 * args.iteration_num,
+                num_training_steps=args.iteration_num
+            )
+        elif args.scheduler_type == "step_lr":
+            scheduler = optim.lr_scheduler.StepLR(
+                self.optimizer, step_size = args.meta_scheduler_step_size, gamma=args.scheduler_gamma
+            )
         return scheduler
 
 
@@ -238,14 +241,16 @@ class Lower(ImplicitProblem):
         return optimizer
 
     def configure_scheduler(self):
-        # scheduler = optim.lr_scheduler.StepLR(
-        #     self.optimizer, step_size = args.scheduler_step_size, gamma=args.scheduler_gamma
-        # )
-        scheduler = get_cosine_schedule_with_warmup(
-            self.optimizer,
-            num_warmup_steps=0.05 * args.iteration_num,
-            num_training_steps=args.iteration_num
-        )
+        if args.scheduler_type == "cosine_schedule_with_warmup":
+            scheduler = get_cosine_schedule_with_warmup(
+                self.optimizer,
+                num_warmup_steps=0.05 * args.iteration_num,
+                num_training_steps=args.iteration_num
+            )
+        elif args.scheduler_type == "step_lr":
+            scheduler = optim.lr_scheduler.StepLR(
+                self.optimizer, step_size = args.scheduler_step_size, gamma=args.scheduler_gamma
+            )
         return scheduler
 
 
