@@ -18,7 +18,7 @@ from transformers import get_cosine_schedule_with_warmup
 cp.checkpoint = partial(cp.checkpoint, use_reentrant=False)
 
 
-parser = argparse.ArgumentParser(description="OraclePRM")
+parser = argparse.ArgumentParser(description="DreamPRM-1.5")
 # data file path and model path
 parser.add_argument('--train_json_file', type=str, default="./data/train.json")
 parser.add_argument('--meta_json_file', type=str, default="./data/meta.json")
@@ -89,7 +89,7 @@ resume_labels = None
     meta_batch_size= args.batch_size,
     max_patch_num = args.max_patch_num,
 )
-wandb.init(project="OraclePRM")
+wandb.init(project="DreamPRM-1.5")
 
 device = torch.device(args.device)
 criterion = nn.CrossEntropyLoss()
