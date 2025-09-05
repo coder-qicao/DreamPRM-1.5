@@ -268,26 +268,11 @@ class Lower(ImplicitProblem):
 class ReweightingEngine(Engine):
     @torch.no_grad()
     def validation(self):
+        # save checkpoints
         torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats()
-        correct = 0
-        total = 0
-        global best_acc
-        for inputs in test_dataloader:
-            # input_test_data_format:
-            # {"question": question, "image_path": image_path, "candidate":[1, 2, 3, 4], "true_false":[True, False, True, False]}
-            with torch.no_grad():
-                true_false, best_index = select_best_answer(self.lower.module, tokenizer, inputs, args.aggregation_function)
-                correct += int(true_false)
-            total += 1
-        acc = correct / total
-        if best_acc < acc and args.retrain is False:
-            best_acc = acc
-            self.lower.module.save_pretrained(args.weights_path)
-        elif args.retrain is True:
-            self.lower.module.save_pretrained(args.weights_path)
-
-        return {"acc": acc, "best_acc": best_acc}
+        self.lower.module.save_pretrained(args.weights_path)
+        return 1
 
 
 upper_config = Config(type="darts", precision=args.precision, retain_graph=True, gradient_clipping=args.gradiant_clipping)
