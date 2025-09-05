@@ -1,14 +1,14 @@
-# OraclePRM: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training
-This repository holds the code and data of [OraclePRM: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training](https://arxiv.org/abs/2505.20241).
+# DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training
+This repository holds the code and data of [DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training](https://arxiv.org/abs/2505.20241).
 
 ## News 🚀🚀🚀
 * Update on Sep 5, 2025: release codes, checkpoints and paper
 
 ## Abstract
-> **OraclePRM: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training**  
-> Training multimodal process reward models (PRMs) is challenged by distribution shifts and noisy data. We introduce OraclePRM, an instance-reweighted framework that adaptively adjusts the importance of each training example via bi-level optimization. 
+> **DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training**  
+> Training multimodal process reward models (PRMs) is challenged by distribution shifts and noisy data. We introduce DreamPRM-1.5, an instance-reweighted framework that adaptively adjusts the importance of each training example via bi-level optimization. 
 > We design two complementary strategies: Instance Table, effective for smaller datasets, and Instance Net, scalable to larger ones. 
-> Integrated into test-time scaling, OraclePRM achieves 84.6 accuracy on the MMMU benchmark, surpassing GPT-5-mini. Moreover, a sanity check using test-distribution meta data shows OraclePRM can closely approach oracle-level performance, highlighting its potential to fully exploit each training instance.
+> Integrated into test-time scaling, DreamPRM-1.5 achieves 84.6 accuracy on the MMMU benchmark, surpassing GPT-5-mini. Moreover, a sanity check using test-distribution meta data shows DreamPRM-1.5 can closely approach oracle-level performance, highlighting its potential to fully exploit each training instance.
 
 ## Table of Contents
 1. [Overview](#installation)
@@ -19,28 +19,34 @@ This repository holds the code and data of [OraclePRM: Unlocking the Potential o
 6. [Citation](#citation)
 
 ## Overview <a name="installation"></a>
-We propose OraclePRM, an *instance-reweighted* multimodal process reward model training framework that dynamically adjusts the weight of each individual data example. To realize instance-level reweighting, we further design two complementary training paradigms: Instance Table, which maintains more activated parameters during training and proves effective for smaller datasets; and Instance Net, which employs a lightweight parameterization with stronger generalization ability, making it more suitable for large-scale training set (See the figure below).
-![OraclePRM-InstanceTable and OraclePRM-InstanceNet](figs/1.png)
+We propose DreamPRM-1.5, an *instance-reweighted* multimodal process reward model training framework that dynamically adjusts the weight of each individual data example. To realize instance-level reweighting, we further design two complementary training paradigms: Instance Table, which maintains more activated parameters during training and proves effective for smaller datasets; and Instance Net, which employs a lightweight parameterization with stronger generalization ability, making it more suitable for large-scale training set (See the figure below).
+![DreamPRM-1.5-InstanceTable and DreamPRM-1.5-InstanceNet](figs/1.png)
 
-By integrating OraclePRM into test-time scaling, we achieve a new state-of-the-art accuracy of 84.6 on the validation set of MMMU benchmark, further advancing the performance frontier of the strongest existing model, GPT-5-mini. Moreover, we conduct a thorough sanity check on instance reweighting, which highlights OraclePRM’s potential to approach oracle-level performance under test-time scaling.
+By integrating DreamPRM-1.5 into test-time scaling, we achieve a new state-of-the-art accuracy of 84.6 on the validation set of MMMU benchmark, further advancing the performance frontier of the strongest existing model, GPT-5-mini. Moreover, we conduct a thorough sanity check on instance reweighting, which highlights DreamPRM-1.5’s potential to approach oracle-level performance under test-time scaling.
 
-| Category | Model / Method |     Accuracy |
-|---|---|-------------:|
-| **Leaderboard (external, top-performing models)** | GPT-5 w/ thinking |         84.2 |
-|  | Gemini 2.5 Pro Deep-Think |         84.0 |
-|  | o3 |         82.9 |
-| **OraclePRM (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking |         80.0 |
-|  | OraclePRM — Instance Table |  84.6 (+4.6) |
-|  | OraclePRM — Instance Net |  83.6 (+3.6) |
-|  | OraclePRM — Instance Table (sanity check) | 90.4 (+10.4) |
-|  | OraclePRM — Instance Net (sanity check) |  86.3 (+6.3) |
-|  | Oracle (upper bound) |         90.7 |
+| Category                                                | Model / Method                |    Accuracy |
+|---------------------------------------------------------|-------------------------------|------------:|
+| **Leaderboard (external, top-performing models)**       | GPT-5 w/ thinking             |        84.2 |
+|                                                         | Gemini 2.5 Pro Deep-Think     |        84.0 |
+|                                                         | o3                            |        82.9 |
+| **Test-time Scaling (built on GPT-5-mini w/ thinking)** | Base: GPT-5-mini w/ thinking  |        80.0 |
+|                                                         | VanillaPRM — No Selection     | 79.1 (-0.9) |
+|                                                         | Self-consistency              | 81.4 (+1.4) |
+|                                                         | VisualPRM                     | 80.5 (+0.5) |
+|                                                         | DreamPRM-1.5 — Instance Table | 84.6 (+4.6) |
+|                                                         | DreamPRM-1.5 — Instance Net   | 83.6 (+3.6) |
+
+[//]: # (|  | DreamPRM-1.5 — Instance Table &#40;sanity check&#41; | 90.4 &#40;+10.4&#41; |)
+
+[//]: # (|  | DreamPRM-1.5 — Instance Net &#40;sanity check&#41; |  86.3 &#40;+6.3&#41; |)
+
+[//]: # (|  | Oracle &#40;upper bound&#41; |         90.7 |)
 
 ## Model Checkpoints <a name="checkpoints"></a>
 | Model                   | Hugging Face Link                                                             |
 |-------------------------|-------------------------------------------------------------------------------|
-| OrcalePRM-InstanceTable | [🤗 Checkpoint link](https://huggingface.co/Cooolder/OrcalePRM-InstanceTable) |
-| OrcalePRM-InstanceNet   | [🤗 Checkpoint link](https://huggingface.co/Cooolder/OrcalePRM-InstanceNet)   |
+| DreamPRM-1.5-InstanceTable | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1.5-InstanceTable) |
+| DreamPRM-1.5-InstanceNet   | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1.5-InstanceNet)   |
 
 ## Quick Start <a name="quick-start"></a>
 > *All commands below are illustrative—rename scripts / paths to match your repo.*
@@ -48,16 +54,16 @@ By integrating OraclePRM into test-time scaling, we achieve a new state-of-the-a
 Git clone our repository, creating a python environment and ativate it via the following command
 
 ```bash
-git https://github.com/coder-qicao/OraclePRM.git
-cd OraclePRM
+git https://github.com/coder-qicao/DreamPRM-1.5.git
+cd DreamPRM-1.5
 ```
 
 ### 2. Environment
 
 ```bash
 # (a) create conda env
-conda create -n oracleprm python=3.10 -y
-conda activate oracleprm
+conda create -n DreamPRM-1.5 python=3.10 -y
+conda activate DreamPRM-1.5
 
 # (b) install requirements
 pip install -r requirements.txt   # torch betty-ml, transformers, accelerate, ...
@@ -65,10 +71,10 @@ pip install -r requirements.txt   # torch betty-ml, transformers, accelerate, ..
 Verify the installation of `torch` and `torchvision` is successful by running `python -c "import torchvision; print(torchvision.__version__)"`. If it outputs the version number without any warnings or errors, then you are good to go. __If it outputs any warnings or errors__, try to uninstall `torch` by `conda uninstall pytorch torchvision torchaudio cudatoolkit` and then reinstall them following [here](https://pytorch.org/get-started/previous-versions/#v1121). You need to find the correct command according to the CUDA version your GPU driver supports (check `nvidia-smi`). 
 
 ### 3. Instance-reweighting
-The current version of OraclePRM is built on InternVL3-1B.
+The current version of DreamPRM-1.5 is built on InternVL3-1B.
 Please download InternVL3-1B weights from [🤗InternVL3-1B](https://huggingface.co/OpenGVLab/InternVL3-1B).
 
-Instance-reweighting for OraclePRM fine-tuning:
+Instance-reweighting for DreamPRM-1.5 fine-tuning:
 ```bash
 # cold start
 bash run_coldstart.sh
