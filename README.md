@@ -45,8 +45,8 @@ By integrating DreamPRM-1.5 into test-time scaling, we achieve a new state-of-th
 ## Model Checkpoints <a name="checkpoints"></a>
 | Model                   | Hugging Face Link                                                             |
 |-------------------------|-------------------------------------------------------------------------------|
-| DreamPRM-1.5-InstanceTable | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1.5-InstanceTable) |
-| DreamPRM-1.5-InstanceNet   | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1.5-InstanceNet)   |
+| DreamPRM-1.5-InstanceTable | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1_5-InstanceTable) |
+| DreamPRM-1.5-InstanceNet   | [🤗 Checkpoint link](https://huggingface.co/Cooolder/DreamPRM-1_5-InstanceNet)   |
 
 ## Quick Start <a name="quick-start"></a>
 > *All commands below are illustrative—rename scripts / paths to match your repo.*
