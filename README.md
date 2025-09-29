@@ -1,4 +1,4 @@
-# DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training
+![DreamPRM-1.5](figs/2.png)
 This repository holds the code and data of [DreamPRM-1.5: Unlocking the Potential of Each Instance for Multimodal Process Reward Model Training](https://github.com/coder-qicao/DreamPRM-1.5/blob/main/figs/DreamPRM-1.5.pdf).
 
 ## News 🚀🚀🚀
@@ -54,7 +54,7 @@ By integrating DreamPRM-1.5 into test-time scaling, we achieve a new state-of-th
 Git clone our repository, creating a python environment and ativate it via the following command
 
 ```bash
-git https://github.com/coder-qicao/DreamPRM-1.5.git
+git clone https://github.com/coder-qicao/DreamPRM-1.5.git
 cd DreamPRM-1.5
 ```
 
