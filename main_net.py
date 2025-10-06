@@ -258,7 +258,7 @@ class ReweightingEngine(Engine):
         torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats()
         self.lower.module.save_pretrained(args.weights_path)
-        return 1
+        return torch.tensor(0.0, device=args.device)
 
 
 upper_config = Config(type="darts", precision=args.precision, retain_graph=True, gradient_clipping=args.gradiant_clipping)
