@@ -872,3 +872,37 @@ def select_best_answer(model, tokenizer, inputs, agg_fuc):
         index += 1
     return true_false, best_index
 
+
+def generate_scores(model, tokenizer, inputs, agg_fuc):
+    # Todo: support batch inference
+    pixel_values = load_image(inputs['image_path'][0], max_num=12).to(torch.bfloat16).cuda()
+    question = inputs['question'][0]
+    output = []
+    for i in inputs['candidates']:
+        m_reason = re.search(r"\[Reasoning\](.*?)(?=\n?Answer:)", i[0], re.S)
+        reasoning = m_reason.group(1) if m_reason else i[0]
+        m_ans = re.search(r"Answer:\s*(.*)", i[0], re.S)
+        steps = split_reasoning_block(reasoning)
+        answer = m_ans.group(1).strip() if m_ans else ""
+        if answer:
+            steps.append(f"Answer: {answer}")
+        conversation = build_conversations(question, steps)
+        conv_template = get_conv_template(model.template)
+        for part in conversation:
+            if part['from'] == 'system':
+                conv_template.system_message = part['value']
+            elif part['from'] == 'human':
+                conv_template.append_message(conv_template.roles[0], part['value'])
+            elif part['from'] == 'gpt':
+                conv_template.append_message(conv_template.roles[1], part['value'])
+        prompt = conv_template.get_prompt()
+        input_ids, attention_mask, image_flags, pixel_values = input_processing(model, tokenizer, prompt, pixel_values)
+        output = model(pixel_values=pixel_values,
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            image_flags=image_flags,).logits  # (batch, seq_len, vocab_size)
+        probs = torch.softmax(output, dim=-1)
+        target = generate_target(input_ids, tokenizer, model.template)  # (batch, seq_len)
+        score = aggregate_score(probs, target, func=agg_fuc)
+        output.append(score)
+    return output
